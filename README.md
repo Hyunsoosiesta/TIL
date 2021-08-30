@@ -1,2 +1,2 @@
 # TIL
-Ah-ha moments!
+Mainly algorithm practice 
