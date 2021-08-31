@@ -1,2 +1,2 @@
 # TIL
-Algorithm solutions 
+Mainly algorithm practice 
