@@ -1,2 +1,2 @@
 # TIL
-Ah-ha moments!
+Algorithm solutions 
