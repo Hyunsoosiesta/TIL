@@ -1,25 +1,17 @@
-// < method 2 : 반복문 풀이 >
-// d 배열 요소의 총합이 budget과 같거나 작으면 그대로 d.length를 리턴함
-// 그렇지 않다면,
-// d를 내림차순으로 정렬하고
-// 요소를 차례대로 result 배열에 넣음
-// result 배열의 요소들을 더하는 sum 변수를 만들고,
-// 요소의 합이 budget과 같아지면 while문 탈출
-// result배열의 길이를 리턴
+// < 반복문 >
+// d를 오름차순으로 정렬하고
+// d의 요소들을 더한 값을 넣을 기본값 0인 sum 변수를 만들고,
+// 요소의 합이 budget보다 커지면 break
+// result 의 횟수를 리턴함
 function solution(d, budget) {
-  let dSum = d.reduce((a, b) => a + b, 0);
-  if (dSum <= budget) return d.length;
-  else {
-    let sorted = d.sort((a, b) => a - b); // [5, 4, 3, 2, 1]
-    let result = [];
-    let sum = 0;
-    let i = 0;
-    for (let i = 0; i < sorted.length; i++) {
-      sum += sorted[i];
-      result.push(sorted[i]);
-      if (sum > budget) break;
-
-    }
-    return result.length - 1;
+  let result = 0;
+  let sum = 0;
+  let sorted = d.sort((a, b) => a - b); // [1, 2, 3, 4, 5]
+  for (let i = 0; i < sorted.length; i++) {
+    sum += sorted[i]; // sum  = 1
+    if (budget < sum) break;
+    result++; // break전에 result++ 이 되면 안됨!!
   }
+  return result;
+
 }
