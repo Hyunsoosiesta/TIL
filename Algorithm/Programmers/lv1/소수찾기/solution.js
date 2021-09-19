@@ -1,42 +1,21 @@
 function solution(n) {
-  const arr = [];
+  // 소수판별 함수 먼저 만들고 boolean 값에 따라 cnt++ 하고 리턴하기
+  let cnt = 0;
+  // 소수판별 함수 만들기
+  const isPrime = function (num) {
+    let sqrt = parseInt(Math.sqrt(num));
+    if (num === 1) return false;
+    if (num === 2) return true;
+    if (num % 2 === 0) return false;
 
-  // n이하의 모든 자연수를 arr에 담는다.
-  for (let i = 1; i <= n; i++) arr.push(i);
-
-  // 자신을 제외하고, 배수를 지워가는 로직
-  // n = 10인 경우, arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  // arr[i]가 존재하는 경우
-  // num에 arr[i]를 저장하고
-  // 반복 돌림 
-  for (let i = 1; i * i <= n; i++) {
-    if (arr[i]) {
-      let num = arr[i];
-      for (let j = num * num; j <= n; j += num) {
-        arr[j - 1] = 0;
-      }
+    for (let i = 3; i <= sqrt; i += 2) {
+      if (num % i === 0) return false;
     }
+    return true;
   }
-
-  let result = arr.filter((number) => number); // 0 제외 요소들만 새 배열로
-  result.shift();
-  return result.length;
+  // numArr의 요소들 중에 isPrime === true 인 값의 총 개수를 ++해서 리턴함
+  for (let num = 2; num <= n; num++) {
+    if (isPrime(num)) cnt++
+  }
+  return cnt;
 }
-
-solution(10)
-/*
-  let count = 0;
-    for (let i = 2;  i <= n; i++) {
-      if(i === 2) {
-          count++
-      }
-      if(i % 2 === 0) {
-          continue;
-      }
-      if (i % (Math.sqrt(i)) === 0) {
-          continue;
-      }
-       count++
-    }
-    return count
-*/
