@@ -8,3 +8,10 @@ function solution(numbers) {
     }
     return result;
 }
+
+
+// method 2.
+// function solution(numbers) {
+//     // 1부터 9까지의 합: 45
+//     return 45 - numbers.reduce((prev, curr) => prev + curr)
+// }
